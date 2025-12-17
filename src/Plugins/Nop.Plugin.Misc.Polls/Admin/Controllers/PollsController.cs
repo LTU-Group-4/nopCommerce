@@ -4,7 +4,7 @@ using Nop.Web.Framework;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc.Filters;
 
-namespace Nop.Plugin.Misc.Polls.Controllers;
+namespace Nop.Plugin.Misc.Polls.Admin.Controllers;
 
 [AutoValidateAntiforgeryToken]
 [AuthorizeAdmin]
@@ -31,7 +31,7 @@ public class PollsController : BasePluginController
     [CheckPermission(StandardPermission.Configuration.MANAGE_PLUGINS)]
     public virtual IActionResult Configure()
     {
-        return View("~/Plugins/Misc.Polls/Views/Configure.cshtml");
+        return View("~/Plugins/Misc.Polls/Admin/Views/Configure.cshtml");
     }
 
     #endregion
