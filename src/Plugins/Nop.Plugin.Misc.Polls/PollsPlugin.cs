@@ -27,6 +27,14 @@ public class PollsPlugin : BasePlugin, IMiscPlugin
     #region Methods
 
     /// <summary>
+    /// Gets a configuration page URL
+    /// </summary>
+    public override string GetConfigurationPageUrl()
+    {
+        return $"{_webHelper.GetStoreLocation()}Admin/Polls/Configure";
+    }
+
+    /// <summary>
     /// Install the plugin
     /// </summary>
     /// <returns>A task that represents the asynchronous operation</returns>
