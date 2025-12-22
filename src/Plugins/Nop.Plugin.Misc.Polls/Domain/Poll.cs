@@ -2,7 +2,7 @@
 using Nop.Core.Domain.Stores;
 
 //namespace Nop.Core.Domain.Polls;
-namespace Nop.Plugin.Misc.Polls.Domain
+namespace Nop.Plugin.Misc.Polls.Domain;
 
 /// <summary>
 /// Represents a poll

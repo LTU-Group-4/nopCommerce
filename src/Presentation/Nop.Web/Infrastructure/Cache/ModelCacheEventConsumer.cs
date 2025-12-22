@@ -474,22 +474,22 @@ public partial class ModelCacheEventConsumer :
     #region Polls
 
     /// <returns>A task that represents the asynchronous operation</returns>
-    public virtual async Task HandleEventAsync(EntityInsertedEvent<Poll> eventMessage)
+/*     public virtual async Task HandleEventAsync(EntityInsertedEvent<Poll> eventMessage)
     {
         await _staticCacheManager.RemoveByPrefixAsync(NopModelCacheDefaults.PollsPrefixCacheKey);
-    }
+    } */
 
     /// <returns>A task that represents the asynchronous operation</returns>
-    public virtual async Task HandleEventAsync(EntityUpdatedEvent<Poll> eventMessage)
+/*     public virtual async Task HandleEventAsync(EntityUpdatedEvent<Poll> eventMessage)
     {
         await _staticCacheManager.RemoveByPrefixAsync(NopModelCacheDefaults.PollsPrefixCacheKey);
-    }
+    } */
 
     /// <returns>A task that represents the asynchronous operation</returns>
-    public virtual async Task HandleEventAsync(EntityDeletedEvent<Poll> eventMessage)
+/*     public virtual async Task HandleEventAsync(EntityDeletedEvent<Poll> eventMessage)
     {
         await _staticCacheManager.RemoveByPrefixAsync(NopModelCacheDefaults.PollsPrefixCacheKey);
-    }
+    } */
 
     #endregion
 

@@ -14,7 +14,7 @@ using Nop.Core.Domain.Localization;
 using Nop.Core.Domain.Logging;
 using Nop.Core.Domain.Media;
 using Nop.Core.Domain.Orders;
-using Nop.Core.Domain.Polls;
+//using Nop.Core.Domain.Polls;
 using Nop.Core.Domain.Seo;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Stores;
@@ -1546,7 +1546,7 @@ public partial class InstallationService
         })));
     }
 
-    /// <summary>
+/*     /// <summary>
     /// Installs a sample polls
     /// </summary>
     /// <param name="samplePolls">Sample polls to install</param>
@@ -1575,7 +1575,7 @@ public partial class InstallationService
                 PollId = sp.Key.Id
             }))
         );
-    }
+    } */
 
     /// <summary>
     /// Create address by sample data

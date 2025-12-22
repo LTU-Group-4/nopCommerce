@@ -10,7 +10,7 @@ using Nop.Core.Domain.Gdpr;
 using Nop.Core.Domain.Logging;
 using Nop.Core.Domain.Messages;
 using Nop.Core.Domain.Orders;
-using Nop.Core.Domain.Polls;
+//using Nop.Core.Domain.Polls;
 using Nop.Core.Domain.ScheduleTasks;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Vendors;
@@ -191,17 +191,17 @@ public class MySqlDateTimeWithPrecisionMigration : ForwardOnlyMigration
         Alter.Table(NameCompatibilityManager.GetTableName(typeof(OrderNote)))
             .AlterColumn(NameCompatibilityManager.GetColumnName(typeof(OrderNote), nameof(OrderNote.CreatedOnUtc)))
             .AsCustom("datetime(6)");
-        Alter.Table(NameCompatibilityManager.GetTableName(typeof(Poll)))
-            .AlterColumn(NameCompatibilityManager.GetColumnName(typeof(Poll), nameof(Poll.EndDateUtc)))
-            .AsCustom("datetime(6)")
-            .Nullable();
-        Alter.Table(NameCompatibilityManager.GetTableName(typeof(Poll)))
-            .AlterColumn(NameCompatibilityManager.GetColumnName(typeof(Poll), nameof(Poll.StartDateUtc)))
-            .AsCustom("datetime(6)")
-            .Nullable();
-        Alter.Table(NameCompatibilityManager.GetTableName(typeof(PollVotingRecord)))
-            .AlterColumn(NameCompatibilityManager.GetColumnName(typeof(PollVotingRecord), nameof(PollVotingRecord.CreatedOnUtc)))
-            .AsCustom("datetime(6)");
+        // Alter.Table(NameCompatibilityManager.GetTableName(typeof(Poll)))
+        //     .AlterColumn(NameCompatibilityManager.GetColumnName(typeof(Poll), nameof(Poll.EndDateUtc)))
+        //     .AsCustom("datetime(6)")
+        //     .Nullable();
+        // Alter.Table(NameCompatibilityManager.GetTableName(typeof(Poll)))
+        //     .AlterColumn(NameCompatibilityManager.GetColumnName(typeof(Poll), nameof(Poll.StartDateUtc)))
+        //     .AsCustom("datetime(6)")
+        //     .Nullable();
+        // Alter.Table(NameCompatibilityManager.GetTableName(typeof(PollVotingRecord)))
+        //     .AlterColumn(NameCompatibilityManager.GetColumnName(typeof(PollVotingRecord), nameof(PollVotingRecord.CreatedOnUtc)))
+        //     .AsCustom("datetime(6)");
         Alter.Table(NameCompatibilityManager.GetTableName(typeof(Product)))
             .AlterColumn(NameCompatibilityManager.GetColumnName(typeof(Product), nameof(Product.AvailableEndDateTimeUtc)))
             .AsCustom("datetime(6)")
