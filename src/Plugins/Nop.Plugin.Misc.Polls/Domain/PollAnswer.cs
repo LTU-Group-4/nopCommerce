@@ -1,4 +1,6 @@
-﻿//namespace Nop.Core.Domain.Polls;
+﻿using Nop.Core;
+
+//namespace Nop.Core.Domain.Polls;
 namespace Nop.Plugin.Misc.Polls.Domain
 
 /// <summary>

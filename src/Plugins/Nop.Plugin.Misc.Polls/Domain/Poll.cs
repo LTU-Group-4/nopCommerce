@@ -1,4 +1,5 @@
-﻿using Nop.Core.Domain.Stores;
+﻿using Nop.Core;
+using Nop.Core.Domain.Stores;
 
 //namespace Nop.Core.Domain.Polls;
 namespace Nop.Plugin.Misc.Polls.Domain
