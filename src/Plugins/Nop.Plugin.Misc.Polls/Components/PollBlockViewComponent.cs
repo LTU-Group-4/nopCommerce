@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Nop.Web.Factories;
 using Nop.Web.Framework.Components;
+using Nop.Plugin.Misc.Polls.Factories;
 
-namespace Nop.Web.Components;
+//namespace Nop.Web.Components;
+namespace Nop.Plugin.Misc.Polls.Components;
 
 public partial class PollBlockViewComponent : NopViewComponent
 {
