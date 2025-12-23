@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Nop.Web.Factories;
+//using Nop.Web.Factories;
 using Nop.Web.Framework.Components;
 using Nop.Plugin.Misc.Polls.Factories;
 

@@ -1,4 +1,5 @@
-﻿using Nop.Core.Domain.Polls;
+﻿//using Nop.Core.Domain.Polls;
+using Nop.Plugin.Misc.Polls.Domain;
 using Nop.Services.Caching;
 
 //namespace Nop.Services.Polls.Caching;
