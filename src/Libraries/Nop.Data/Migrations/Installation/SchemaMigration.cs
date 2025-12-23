@@ -16,7 +16,7 @@ using Nop.Core.Domain.Media;
 using Nop.Core.Domain.Menus;
 using Nop.Core.Domain.Messages;
 using Nop.Core.Domain.Orders;
-//using Nop.Core.Domain.Polls;
+//using Nop.Core.Domain.Polls; // Commented out for Plugin extraction
 using Nop.Core.Domain.ScheduleTasks;
 using Nop.Core.Domain.Security;
 using Nop.Core.Domain.Seo;
@@ -153,9 +153,12 @@ public class SchemaMigration : ForwardOnlyMigration
         Create.TableFor<NewsLetterSubscriptionType>();
         Create.TableFor<NewsLetterSubscription>();
         Create.TableFor<QueuedEmail>();
+        
+        // POLLS - Commented out as they have been moved to your plugin!
         //Create.TableFor<Poll>();
         //Create.TableFor<PollAnswer>();
         //Create.TableFor<PollVotingRecord>();
+        
         Create.TableFor<AclRecord>();
         Create.TableFor<PermissionRecord>();
         Create.TableFor<PermissionRecordCustomerRoleMapping>();
