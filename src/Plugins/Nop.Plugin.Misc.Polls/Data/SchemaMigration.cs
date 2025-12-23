@@ -10,14 +10,21 @@ namespace Nop.Plugin.Misc.Polls.Data
     {
         public override void Up()
         {
-            // Skapar tabellen för Poll (Själva omröstningen)
-            Create.TableFor<Poll>();
+            // Smart check
+            if (!Schema.Table(nameof(Poll)).Exists())
+            {
+                Create.TableFor<Poll>();
+            }
 
-            // Skapar tabellen för PollAnswer (Svarsalternativen)
-            Create.TableFor<PollAnswer>();
+            if (!Schema.Table(nameof(PollAnswer)).Exists())
+            {
+                Create.TableFor<PollAnswer>();
+            }
 
-            // Skapar tabellen för PollVotingRecord (Vem som röstat vad)
-            Create.TableFor<PollVotingRecord>();
+            if (!Schema.Table(nameof(PollVotingRecord)).Exists())
+            {
+                Create.TableFor<PollVotingRecord>();
+            }
         }
     }
 }
