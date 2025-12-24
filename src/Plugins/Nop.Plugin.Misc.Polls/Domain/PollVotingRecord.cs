@@ -1,25 +1,26 @@
-﻿using Nop.Core;
+﻿using System;
+using Nop.Core;
 
-//namespace Nop.Core.Domain.Polls;
-namespace Nop.Plugin.Misc.Polls.Domain;
-
-/// <summary>
-/// Represents a poll voting record
-/// </summary>
-public partial class PollVotingRecord : BaseEntity
+namespace Nop.Plugin.Misc.Polls.Domain
 {
     /// <summary>
-    /// Gets or sets the poll answer identifier
+    /// Represents a poll voting record
     /// </summary>
-    public int PollAnswerId { get; set; }
+    public partial class PollVotingRecord : BaseEntity
+    {
+        /// <summary>
+        /// Gets or sets the poll answer identifier
+        /// </summary>
+        public int PollAnswerId { get; set; }
 
-    /// <summary>
-    /// Gets or sets the customer identifier
-    /// </summary>
-    public int CustomerId { get; set; }
+        /// <summary>
+        /// Gets or sets the customer identifier
+        /// </summary>
+        public int CustomerId { get; set; }
 
-    /// <summary>
-    /// Gets or sets the date and time of instance creation
-    /// </summary>
-    public DateTime CreatedOnUtc { get; set; }
+        /// <summary>
+        /// Gets or sets the date and time of instance creation
+        /// </summary>
+        public DateTime CreatedOnUtc { get; set; }
+    }
 }

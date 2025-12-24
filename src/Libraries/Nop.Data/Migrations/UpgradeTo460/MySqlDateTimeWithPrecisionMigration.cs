@@ -29,127 +29,298 @@ public class MySqlDateTimeWithPrecisionMigration : ForwardOnlyMigration
         if (dataSettings.DataProvider != DataProviderType.MySql)
             return;
 
-        // Using standard FluentMigrator syntax (Alter.Table) instead of AddOrAlterColumnFor
-        // to avoid CS1061 errors in your version.
+        this.AddOrAlterColumnFor<ActivityLog>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(ActivityLog)).AlterColumn(nameof(ActivityLog.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Address)).AlterColumn(nameof(Address.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(BackInStockSubscription)).AlterColumn(nameof(BackInStockSubscription.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(BlogComment)).AlterColumn(nameof(BlogComment.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Address>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(BlogPost)).AlterColumn(nameof(BlogPost.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(BlogPost)).AlterColumn(nameof(BlogPost.EndDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(BlogPost)).AlterColumn(nameof(BlogPost.StartDateUtc)).AsCustom("datetime(6)").Nullable();
+        this.AddOrAlterColumnFor<BackInStockSubscription>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(Campaign)).AlterColumn(nameof(Campaign.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Campaign)).AlterColumn(nameof(Campaign.DontSendBeforeDateUtc)).AsCustom("datetime(6)").Nullable();
+        this.AddOrAlterColumnFor<BlogComment>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(Category)).AlterColumn(nameof(Category.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Category)).AlterColumn(nameof(Category.UpdatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<BlogPost>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(Currency)).AlterColumn(nameof(Currency.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Currency)).AlterColumn(nameof(Currency.UpdatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<BlogPost>(t => t.EndDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
 
-        Alter.Table(nameof(Customer)).AlterColumn(nameof(Customer.CannotLoginUntilDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Customer)).AlterColumn(nameof(Customer.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Customer)).AlterColumn(nameof(Customer.DateOfBirth)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Customer)).AlterColumn(nameof(Customer.LastActivityDateUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Customer)).AlterColumn(nameof(Customer.LastLoginDateUtc)).AsCustom("datetime(6)").Nullable();
+        this.AddOrAlterColumnFor<BlogPost>(t => t.StartDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
 
-        Alter.Table(nameof(CustomerPassword)).AlterColumn(nameof(CustomerPassword.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Campaign>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(Discount)).AlterColumn(nameof(Discount.EndDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Discount)).AlterColumn(nameof(Discount.StartDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(DiscountUsageHistory)).AlterColumn(nameof(DiscountUsageHistory.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Campaign>(t => t.DontSendBeforeDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
 
-        Alter.Table(nameof(Forum)).AlterColumn(nameof(Forum.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Forum)).AlterColumn(nameof(Forum.LastPostTime)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Forum)).AlterColumn(nameof(Forum.UpdatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Category>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(ForumGroup)).AlterColumn(nameof(ForumGroup.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(ForumGroup)).AlterColumn(nameof(ForumGroup.UpdatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Category>(t => t.UpdatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(ForumPost)).AlterColumn(nameof(ForumPost.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(ForumPost)).AlterColumn(nameof(ForumPost.UpdatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(ForumPostVote)).AlterColumn(nameof(ForumPostVote.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Currency>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(PrivateMessage)).AlterColumn(nameof(PrivateMessage.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(ForumSubscription)).AlterColumn(nameof(ForumSubscription.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Currency>(t => t.UpdatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(ForumTopic)).AlterColumn(nameof(ForumTopic.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(ForumTopic)).AlterColumn(nameof(ForumTopic.LastPostTime)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(ForumTopic)).AlterColumn(nameof(ForumTopic.UpdatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Customer>(t => t.CannotLoginUntilDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
 
-        Alter.Table(nameof(GdprLog)).AlterColumn(nameof(GdprLog.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(GenericAttribute)).AlterColumn(nameof(GenericAttribute.CreatedOrUpdatedDateUTC)).AsCustom("datetime(6)").Nullable();
+        this.AddOrAlterColumnFor<Customer>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(GiftCard)).AlterColumn(nameof(GiftCard.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(GiftCardUsageHistory)).AlterColumn(nameof(GiftCardUsageHistory.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Customer>(t => t.DateOfBirth)
+            .AsCustom("datetime(6)")
+            .Nullable();
 
-        Alter.Table(nameof(Log)).AlterColumn(nameof(Log.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Customer>(t => t.LastActivityDateUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(Manufacturer)).AlterColumn(nameof(Manufacturer.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Manufacturer)).AlterColumn(nameof(Manufacturer.UpdatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Customer>(t => t.LastLoginDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
 
-        Alter.Table(nameof(MigrationVersionInfo)).AlterColumn(nameof(MigrationVersionInfo.AppliedOn)).AsCustom("datetime(6)").Nullable();
+        this.AddOrAlterColumnFor<CustomerPassword>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(NewsLetterSubscription)).AlterColumn(nameof(NewsLetterSubscription.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Discount>(t => t.EndDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
 
-        Alter.Table(nameof(Order)).AlterColumn(nameof(Order.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Order)).AlterColumn(nameof(Order.PaidDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(OrderItem)).AlterColumn(nameof(OrderItem.RentalEndDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(OrderItem)).AlterColumn(nameof(OrderItem.RentalStartDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(OrderNote)).AlterColumn(nameof(OrderNote.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Discount>(t => t.StartDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
 
-        // POLLS - Commented out as they are moved to a Plugin
-        //Alter.Table(nameof(Poll)).AlterColumn(nameof(Poll.EndDateUtc)).AsCustom("datetime(6)").Nullable();
-        //Alter.Table(nameof(Poll)).AlterColumn(nameof(Poll.StartDateUtc)).AsCustom("datetime(6)").Nullable();
-        //Alter.Table(nameof(PollVotingRecord)).AlterColumn(nameof(PollVotingRecord.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<DiscountUsageHistory>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(Product)).AlterColumn(nameof(Product.AvailableEndDateTimeUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Product)).AlterColumn(nameof(Product.AvailableStartDateTimeUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Product)).AlterColumn(nameof(Product.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Product)).AlterColumn(nameof(Product.MarkAsNewEndDateTimeUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Product)).AlterColumn(nameof(Product.MarkAsNewStartDateTimeUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Product)).AlterColumn(nameof(Product.PreOrderAvailabilityStartDateTimeUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Product)).AlterColumn(nameof(Product.UpdatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Forum>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(ProductReview)).AlterColumn(nameof(ProductReview.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<Forum>(t => t.LastPostTime)
+            .AsCustom("datetime(6)")
+            .Nullable();
 
-        Alter.Table(nameof(QueuedEmail)).AlterColumn(nameof(QueuedEmail.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(QueuedEmail)).AlterColumn(nameof(QueuedEmail.DontSendBeforeDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(QueuedEmail)).AlterColumn(nameof(QueuedEmail.SentOnUtc)).AsCustom("datetime(6)").Nullable();
+        this.AddOrAlterColumnFor<Forum>(t => t.UpdatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(RecurringPayment)).AlterColumn(nameof(RecurringPayment.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(RecurringPayment)).AlterColumn(nameof(RecurringPayment.StartDateUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(RecurringPaymentHistory)).AlterColumn(nameof(RecurringPaymentHistory.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<ForumGroup>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(ReturnRequest)).AlterColumn(nameof(ReturnRequest.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(ReturnRequest)).AlterColumn(nameof(ReturnRequest.UpdatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<ForumGroup>(t => t.UpdatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(RewardPointsHistory)).AlterColumn(nameof(RewardPointsHistory.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(RewardPointsHistory)).AlterColumn(nameof(RewardPointsHistory.EndDateUtc)).AsCustom("datetime(6)").Nullable();
+        this.AddOrAlterColumnFor<ForumPost>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(ScheduleTask)).AlterColumn(nameof(ScheduleTask.LastEnabledUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(ScheduleTask)).AlterColumn(nameof(ScheduleTask.LastEndUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(ScheduleTask)).AlterColumn(nameof(ScheduleTask.LastStartUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(ScheduleTask)).AlterColumn(nameof(ScheduleTask.LastSuccessUtc)).AsCustom("datetime(6)").Nullable();
+        this.AddOrAlterColumnFor<ForumPost>(t => t.UpdatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(Shipment)).AlterColumn(nameof(Shipment.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(Shipment)).AlterColumn(nameof(Shipment.DeliveryDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Shipment)).AlterColumn(nameof(Shipment.ReadyForPickupDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(Shipment)).AlterColumn(nameof(Shipment.ShippedDateUtc)).AsCustom("datetime(6)").Nullable();
+        this.AddOrAlterColumnFor<ForumPostVote>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(ShoppingCartItem)).AlterColumn(nameof(ShoppingCartItem.CreatedOnUtc)).AsCustom("datetime(6)");
-        Alter.Table(nameof(ShoppingCartItem)).AlterColumn(nameof(ShoppingCartItem.RentalEndDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(ShoppingCartItem)).AlterColumn(nameof(ShoppingCartItem.RentalStartDateUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(ShoppingCartItem)).AlterColumn(nameof(ShoppingCartItem.UpdatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<PrivateMessage>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(StockQuantityHistory)).AlterColumn(nameof(StockQuantityHistory.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<ForumSubscription>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(TierPrice)).AlterColumn(nameof(TierPrice.EndDateTimeUtc)).AsCustom("datetime(6)").Nullable();
-        Alter.Table(nameof(TierPrice)).AlterColumn(nameof(TierPrice.StartDateTimeUtc)).AsCustom("datetime(6)").Nullable();
+        this.AddOrAlterColumnFor<ForumTopic>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
 
-        Alter.Table(nameof(VendorNote)).AlterColumn(nameof(VendorNote.CreatedOnUtc)).AsCustom("datetime(6)");
+        this.AddOrAlterColumnFor<ForumTopic>(t => t.LastPostTime)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<ForumTopic>(t => t.UpdatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<GdprLog>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<GenericAttribute>(t => t.CreatedOrUpdatedDateUTC)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<GiftCard>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<GiftCardUsageHistory>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<Log>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<Manufacturer>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<Manufacturer>(t => t.UpdatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<MigrationVersionInfo>(t => t.AppliedOn)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<NewsLetterSubscription>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<Order>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<Order>(t => t.PaidDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<OrderItem>(t => t.RentalEndDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<OrderItem>(t => t.RentalStartDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<OrderNote>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+/*         this.AddOrAlterColumnFor<Poll>(t => t.EndDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<Poll>(t => t.StartDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<PollVotingRecord>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)"); */
+
+        this.AddOrAlterColumnFor<Product>(t => t.AvailableEndDateTimeUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<Product>(t => t.AvailableStartDateTimeUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<Product>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<Product>(t => t.MarkAsNewEndDateTimeUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<Product>(t => t.MarkAsNewStartDateTimeUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<Product>(t => t.PreOrderAvailabilityStartDateTimeUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<Product>(t => t.UpdatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<ProductReview>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<QueuedEmail>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<QueuedEmail>(t => t.DontSendBeforeDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<QueuedEmail>(t => t.SentOnUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<RecurringPayment>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<RecurringPayment>(t => t.StartDateUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<RecurringPaymentHistory>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<ReturnRequest>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<ReturnRequest>(t => t.UpdatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<RewardPointsHistory>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<RewardPointsHistory>(t => t.EndDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<ScheduleTask>(t => t.LastEnabledUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<ScheduleTask>(t => t.LastEndUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<ScheduleTask>(t => t.LastStartUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<ScheduleTask>(t => t.LastSuccessUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<Shipment>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<Shipment>(t => t.DeliveryDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<Shipment>(t => t.ReadyForPickupDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<Shipment>(t => t.ShippedDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<ShoppingCartItem>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<ShoppingCartItem>(t => t.RentalEndDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<ShoppingCartItem>(t => t.RentalStartDateUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<ShoppingCartItem>(t => t.UpdatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<StockQuantityHistory>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
+
+        this.AddOrAlterColumnFor<TierPrice>(t => t.EndDateTimeUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<TierPrice>(t => t.StartDateTimeUtc)
+            .AsCustom("datetime(6)")
+            .Nullable();
+
+        this.AddOrAlterColumnFor<VendorNote>(t => t.CreatedOnUtc)
+            .AsCustom("datetime(6)");
     }
 }
