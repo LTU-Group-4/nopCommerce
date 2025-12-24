@@ -16,7 +16,7 @@ using Nop.Core.Domain.Media;
 using Nop.Core.Domain.Menus;
 using Nop.Core.Domain.Messages;
 using Nop.Core.Domain.Orders;
-//using Nop.Core.Domain.Polls; // Commented out for Plugin extraction
+// Polls namespace removed to prevent conflicts
 using Nop.Core.Domain.ScheduleTasks;
 using Nop.Core.Domain.Security;
 using Nop.Core.Domain.Seo;
@@ -25,7 +25,7 @@ using Nop.Core.Domain.Stores;
 using Nop.Core.Domain.Tax;
 using Nop.Core.Domain.Topics;
 using Nop.Core.Domain.Vendors;
-using Nop.Data.Extensions;
+using Nop.Data.Extensions; // <--- THIS IS THE CRITICAL LINE FOR 'TableFor'
 
 namespace Nop.Data.Migrations.Installation;
 
@@ -154,10 +154,7 @@ public class SchemaMigration : ForwardOnlyMigration
         Create.TableFor<NewsLetterSubscription>();
         Create.TableFor<QueuedEmail>();
         
-        // POLLS - Commented out as they have been moved to your plugin!
-        //Create.TableFor<Poll>();
-        //Create.TableFor<PollAnswer>();
-        //Create.TableFor<PollVotingRecord>();
+        // POLLS - Removed (Moved to Plugin)
         
         Create.TableFor<AclRecord>();
         Create.TableFor<PermissionRecord>();
