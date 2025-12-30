@@ -1,8 +1,6 @@
 ﻿using Nop.Core;
-//using Nop.Core.Domain.Polls;
 using Nop.Plugin.Misc.Polls.Domain;
 
-//namespace Nop.Services.Polls;
 namespace Nop.Plugin.Misc.Polls.Services;
 
 /// <summary>

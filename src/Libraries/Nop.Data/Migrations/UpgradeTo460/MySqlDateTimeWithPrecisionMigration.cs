@@ -10,7 +10,6 @@ using Nop.Core.Domain.Gdpr;
 using Nop.Core.Domain.Logging;
 using Nop.Core.Domain.Messages;
 using Nop.Core.Domain.Orders;
-//using Nop.Core.Domain.Polls; // Commented out for Plugin extraction
 using Nop.Core.Domain.ScheduleTasks;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Vendors;
@@ -25,7 +24,7 @@ public class MySqlDateTimeWithPrecisionMigration : ForwardOnlyMigration
     {
         var dataSettings = DataSettingsManager.LoadSettings();
 
-        // Update the types only in MySql 
+        //update the types only in MySql 
         if (dataSettings.DataProvider != DataProviderType.MySql)
             return;
 
@@ -190,17 +189,6 @@ public class MySqlDateTimeWithPrecisionMigration : ForwardOnlyMigration
 
         this.AddOrAlterColumnFor<OrderNote>(t => t.CreatedOnUtc)
             .AsCustom("datetime(6)");
-
-/*         this.AddOrAlterColumnFor<Poll>(t => t.EndDateUtc)
-            .AsCustom("datetime(6)")
-            .Nullable();
-
-        this.AddOrAlterColumnFor<Poll>(t => t.StartDateUtc)
-            .AsCustom("datetime(6)")
-            .Nullable();
-
-        this.AddOrAlterColumnFor<PollVotingRecord>(t => t.CreatedOnUtc)
-            .AsCustom("datetime(6)"); */
 
         this.AddOrAlterColumnFor<Product>(t => t.AvailableEndDateTimeUtc)
             .AsCustom("datetime(6)")

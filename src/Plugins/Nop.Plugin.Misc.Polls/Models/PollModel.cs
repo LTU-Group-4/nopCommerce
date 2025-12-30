@@ -1,6 +1,5 @@
 ﻿using Nop.Web.Framework.Models;
 
-//namespace Nop.Web.Models.Polls;
 namespace Nop.Plugin.Misc.Polls.Models;
 
 public partial record PollModel : BaseNopEntityModel
