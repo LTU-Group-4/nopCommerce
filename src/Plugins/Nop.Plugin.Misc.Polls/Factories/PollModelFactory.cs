@@ -1,17 +1,20 @@
 ﻿using Nop.Core;
 using Nop.Core.Caching;
-using Nop.Core.Domain.Polls;
-using Nop.Services.Polls;
-using Nop.Web.Infrastructure.Cache;
-using Nop.Web.Models.Polls;
+using Nop.Plugin.Misc.Polls.Domain;
+using Nop.Plugin.Misc.Polls.Models;
+using Nop.Plugin.Misc.Polls.Services;
 
-namespace Nop.Web.Factories;
+namespace Nop.Plugin.Misc.Polls.Factories;
 
 /// <summary>
 /// Represents the poll model factory
 /// </summary>
 public partial class PollModelFactory : IPollModelFactory
 {
+
+    //own cach key for plugin
+    private const string POLL_MODEL_KEY = "Nop.plugins.polls.model.{0}-{1}";
+
     #region Fields
 
     protected readonly IPollService _pollService;
@@ -92,7 +95,7 @@ public partial class PollModelFactory : IPollModelFactory
 
         var store = await _storeContext.GetCurrentStoreAsync();
         var currentLanguage = await _workContext.GetWorkingLanguageAsync();
-        var cacheKey = _staticCacheManager.PrepareKeyForDefaultCache(NopModelCacheDefaults.PollBySystemNameModelKey,
+        var cacheKey = _staticCacheManager.PrepareKeyForDefaultCache(new Nop.Core.Caching.CacheKey(POLL_MODEL_KEY),
             systemKeyword, currentLanguage, store);
 
         var cachedModel = await _staticCacheManager.GetAsync(cacheKey, async () =>
@@ -132,7 +135,7 @@ public partial class PollModelFactory : IPollModelFactory
         var customer = await _workContext.GetCurrentCustomerAsync();
         var store = await _storeContext.GetCurrentStoreAsync();
         var language = await _workContext.GetWorkingLanguageAsync();
-        var cacheKey = _staticCacheManager.PrepareKeyForDefaultCache(NopModelCacheDefaults.HomepagePollsModelKey, language, store);
+        var cacheKey = _staticCacheManager.PrepareKeyForDefaultCache(new Nop.Core.Caching.CacheKey(POLL_MODEL_KEY), language, store);
 
         var cachedPolls = await _staticCacheManager.GetAsync(cacheKey, async () =>
         {

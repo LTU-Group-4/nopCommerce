@@ -1,57 +1,35 @@
-﻿using Nop.Core;
+﻿﻿using System.Threading.Tasks;
+using Nop.Core;
 using Nop.Services.Common;
 using Nop.Services.Plugins;
 
-namespace Nop.Plugin.Misc.Polls;
-
-/// <summary>
-/// Represents the nopCommerce mobile application helper plugin
-/// </summary>
-public class PollsPlugin : BasePlugin, IMiscPlugin
+namespace Nop.Plugin.Misc.Polls
 {
-    #region Fields
-
-    private readonly IWebHelper _webHelper;
-
-    #endregion
-
-    #region Ctor
-
-    public PollsPlugin(IWebHelper webHelper)
-    {
-        _webHelper = webHelper;
-    }
-
-    #endregion
-
-    #region Methods
-
     /// <summary>
-    /// Gets a configuration page URL
+    /// Main plugin class.
     /// </summary>
-    public override string GetConfigurationPageUrl()
+    public class PollsPlugin : BasePlugin, IMiscPlugin
     {
-        return $"{_webHelper.GetStoreLocation()}Admin/Polls/Configure";
+        private readonly IWebHelper _webHelper;
+
+        public PollsPlugin(IWebHelper webHelper)
+        {
+            _webHelper = webHelper;
+        }
+
+        public override string GetConfigurationPageUrl()
+        {
+            return $"{_webHelper.GetStoreLocation()}Admin/Poll/List";
+        }
+
+        public override async Task InstallAsync()
+        {
+            await base.InstallAsync();
+        }
+
+        public override async Task UninstallAsync()
+        {
+            await base.UninstallAsync();
+        }
     }
-
-    /// <summary>
-    /// Install the plugin
-    /// </summary>
-    /// <returns>A task that represents the asynchronous operation</returns>
-    public override async Task InstallAsync()
-    {
-        await base.InstallAsync();
-    }
-
-    /// <summary>
-    /// Uninstall the plugin
-    /// </summary>
-    /// <returns>A task that represents the asynchronous operation</returns>
-    public override async Task UninstallAsync()
-    {
-        await base.UninstallAsync();
-    }
-
-    #endregion
-
 }

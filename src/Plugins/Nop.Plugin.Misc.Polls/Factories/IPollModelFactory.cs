@@ -1,7 +1,8 @@
-﻿using Nop.Core.Domain.Polls;
-using Nop.Web.Models.Polls;
+﻿using Nop.Plugin.Misc.Polls.Domain;
+using Nop.Plugin.Misc.Polls.Models;
+using Nop.Plugin.Misc.Polls.Services;
 
-namespace Nop.Web.Factories;
+namespace Nop.Plugin.Misc.Polls.Factories;
 
 /// <summary>
 /// Represents the interface of the poll model factory
