@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Nop.Core.Infrastructure; // why no use here? why we need it?
+using Microsoft.Extensions.DependencyInjection; 
 using Nop.Plugin.Misc.Polls.Services;
 
 namespace Nop.Plugin.Misc.Polls.Infrastructure
