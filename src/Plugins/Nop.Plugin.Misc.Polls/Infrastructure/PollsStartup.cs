@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection; 
+using Microsoft.Extensions.DependencyInjection;
+using Nop.Core.Infrastructure; 
 using Nop.Plugin.Misc.Polls.Services;
 
 namespace Nop.Plugin.Misc.Polls.Infrastructure
